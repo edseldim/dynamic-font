@@ -20,6 +20,7 @@ function registerListeners(){
     contactBtn.addEventListener("click", () =>{
         const modalBlock = document.createElement("DIV");
         modalBlock.style.backgroundColor = "rgba(0, 0, 0, 0.6)";
+        modalBlock.style.top = "0";
         modalBlock.style.position = "fixed";
         modalBlock.style.width = "100%";
         modalBlock.style.height = "100%";

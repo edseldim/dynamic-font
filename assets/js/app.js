@@ -6,6 +6,33 @@ showCookiesBlock();
 registerListeners();
 
 function registerListeners(){
+
+    document.addEventListener("DOMContentLoaded", (e) => {
+        fetch("https://api.escuelajs.co/api/v1/categories")
+        .then(re => re.json())
+        .then(re => {
+            re.forEach((cat) => {
+                let catName = cat["name"];
+                let catImage = cat["image"];
+                const categoryBlock = document.createElement("DIV");
+                const imageDiv = document.createElement("DIV");
+                const imageBlock = document.createElement("IMG");
+                const descBlock = document.createElement("H2");
+                imageBlock.src = catImage;
+                imageBlock.style.width = "100%";
+                imageBlock.style.height = "200px";
+                imageBlock.style.objectFit = "cover";
+                imageDiv.style.width = "100%";
+                descBlock.textContent = catName;
+                descBlock.style.textAlign = "center";
+                imageDiv.appendChild(imageBlock);
+                categoryBlock.appendChild(imageDiv);
+                categoryBlock.appendChild(descBlock);
+                document.querySelector(".cat-list").append(categoryBlock);
+            });
+        })
+    })
+
     toggleBtn.addEventListener("click", (e) => {
         totalOffset = headerDiv.offsetHeight - toggleBtn.offsetHeight;
         if(headerDiv.style.top === `-${totalOffset}px`){
@@ -41,6 +68,8 @@ function registerListeners(){
         modalMessageWindowDiv.style.flexDirection = "column";
         modalMessageWindowDiv.style.alignItems = "center";
         modalMessageWindowDiv.style.rowGap = "1rem";
+        modalMessageWindowDiv.style.borderRadius = "1rem";
+        modalMessageWindowDiv.style.padding = "1rem";
         const emailInput = document.createElement("INPUT");
         emailInput.type = "email";
         emailInput.placeholder = "test@email.com";
@@ -77,18 +106,24 @@ function showCookiesBlock(){
         hideBtnDiv = document.createElement("DIV");
         hideBtn = document.createElement("BUTTON");
         hideBtn.style.height = "100%";
+        hideBtn.style.textAlign = "center";
+        hideBtn.style.backgroundColor = "white";
+        hideBtn.style.border = ".1rem black solid";
         hideBtn.onclick = () => {
             bottomCookiesDiv.remove();
         }
-        hideBtn.textContent = "Hide";
+        hideBtn.innerHTML = "close";
         hideBtnDiv.style.flexGrow = "1";
+        hideBtnDiv.style.textAlign = "center";
+        hideBtnDiv.style.border = ".1rem #efefef solid";
         pBlock.style.flexGrow = "3";
         bottomCookiesDiv.style.display = "flex"
         bottomCookiesDiv.style.position = "fixed";
         bottomCookiesDiv.style.bottom = 0;
         pBlock.textContent = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure ratione veritatis commodi obcaecati quod veniam consequatur necessitatibus, aliquam sequi tempore vitae quas magnam repellat? Impedit placeat magnam sunt accusantium repellat.";
+        pBlock.style.textAlign = "justify";
         bottomCookiesDiv.style.width = "100%";
-        bottomCookiesDiv.style.border = ".5rem #efefef solid";
+        bottomCookiesDiv.style.border = ".2rem #efefef solid";
         bottomCookiesDiv.style.backgroundColor = "white";
         hideBtnDiv.appendChild(hideBtn);
         bottomCookiesDiv.appendChild(pBlock);

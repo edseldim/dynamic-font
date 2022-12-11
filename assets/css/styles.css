@@ -48,6 +48,15 @@ body{
     padding-top: .5rem;
 }
 
+.header a, a::after{
+    text-decoration: none;
+    color:black;
+}
+
+.header a:hover{
+    text-decoration: underline;
+}
+
 .header-toggle-button{
     padding: 1rem 0;
     height: 3rem;

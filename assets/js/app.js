@@ -30,7 +30,7 @@ function registerListeners(){
         modalBlock.style.alignItems = "center";
         modalBlock.style.justifyContent = "center";
         const modalMessageWindowDiv = document.createElement("DIV");
-        modalMessageWindowDiv.style.height = "15rem";
+        modalMessageWindowDiv.style.height = "12rem";
         modalMessageWindowDiv.style.width = "20rem";
         modalMessageWindowDiv.style.backgroundColor = "rgba(255, 255, 255, 1)";
         modalMessageWindowDiv.style.color = "black";
@@ -57,9 +57,13 @@ function registerListeners(){
         closeBtn.onclick = () => {
             modalBlock.remove();
         }
+        const actionsMenuBar = document.createElement("DIV");
+        actionsMenuBar.style.display = "flex";
+        actionsMenuBar.style.columnGap = "1rem";
+        actionsMenuBar.appendChild(submitInput);
+        actionsMenuBar.appendChild(closeBtn);
         modalMessageWindowDiv.appendChild(emailInput);
-        modalMessageWindowDiv.appendChild(closeBtn);
-        modalMessageWindowDiv.appendChild(submitInput);
+        modalMessageWindowDiv.appendChild(actionsMenuBar);
         modalBlock.appendChild(modalMessageWindowDiv);
         headerDiv.parentElement.insertBefore(modalBlock,headerDiv);
     });

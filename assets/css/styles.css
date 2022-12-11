@@ -34,6 +34,13 @@ body{
     text-align: center;
 }
 
+@media(min-width:768px){
+    .header{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
 .header div{
     border-bottom: .1rem #efefef solid;
     width: 100%;

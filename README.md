@@ -9,6 +9,7 @@ It has 3 features that can be usually found on modern websites:
 1. A small bottom message that asks you for some kind of cookies permissions.
 2. A dynamic menu that opens or closes.
 3. A modal for inputting contact data.
+4. Responsive design
 
 ## Purpose
 

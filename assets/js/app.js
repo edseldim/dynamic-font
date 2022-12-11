@@ -3,9 +3,9 @@ headerDiv = document.querySelector(".compound-header");
 contactBtn = document.querySelector(".contact-us");
 
 showCookiesBlock();
-listenersRegister();
+registerListeners();
 
-function listenersRegister(){
+function registerListeners(){
     toggleBtn.addEventListener("click", (e) => {
         totalOffset = headerDiv.offsetHeight - toggleBtn.offsetHeight;
         if(headerDiv.style.top === `-${totalOffset}px`){
@@ -18,27 +18,27 @@ function listenersRegister(){
     });
 
     contactBtn.addEventListener("click", () =>{
-        const divBlock = document.createElement("DIV");
-        divBlock.style.backgroundColor = "rgba(0, 0, 0, 0.6)";
-        divBlock.style.position = "fixed";
-        divBlock.style.width = "100%";
-        divBlock.style.height = "100%";
-        divBlock.style.zIndex = "2";
-        divBlock.style.display = "flex";
-        divBlock.style.flexDirection = "column";
-        divBlock.style.alignItems = "center";
-        divBlock.style.justifyContent = "center";
-        const divMessageContainer = document.createElement("DIV");
-        divMessageContainer.style.height = "15rem";
-        divMessageContainer.style.width = "20rem";
-        divMessageContainer.style.backgroundColor = "rgba(255, 255, 255, 1)";
-        divMessageContainer.style.color = "black";
-        divMessageContainer.style.zIndex = "3";
-        divMessageContainer.textContent = "If you want to contact us, type your email below:";
-        divMessageContainer.style.display = "flex";
-        divMessageContainer.style.flexDirection = "column";
-        divMessageContainer.style.alignItems = "center";
-        divMessageContainer.style.rowGap = "1rem";
+        const modalBlock = document.createElement("DIV");
+        modalBlock.style.backgroundColor = "rgba(0, 0, 0, 0.6)";
+        modalBlock.style.position = "fixed";
+        modalBlock.style.width = "100%";
+        modalBlock.style.height = "100%";
+        modalBlock.style.zIndex = "2";
+        modalBlock.style.display = "flex";
+        modalBlock.style.flexDirection = "column";
+        modalBlock.style.alignItems = "center";
+        modalBlock.style.justifyContent = "center";
+        const modalMessageWindowDiv = document.createElement("DIV");
+        modalMessageWindowDiv.style.height = "15rem";
+        modalMessageWindowDiv.style.width = "20rem";
+        modalMessageWindowDiv.style.backgroundColor = "rgba(255, 255, 255, 1)";
+        modalMessageWindowDiv.style.color = "black";
+        modalMessageWindowDiv.style.zIndex = "3";
+        modalMessageWindowDiv.textContent = "If you want to contact us, type your email below:";
+        modalMessageWindowDiv.style.display = "flex";
+        modalMessageWindowDiv.style.flexDirection = "column";
+        modalMessageWindowDiv.style.alignItems = "center";
+        modalMessageWindowDiv.style.rowGap = "1rem";
         const emailInput = document.createElement("INPUT");
         emailInput.type = "email";
         emailInput.placeholder = "test@email.com";
@@ -48,45 +48,45 @@ function listenersRegister(){
         submitInput.style.width = "5rem";
         submitInput.style.textAlign = "center";
         submitInput.onclick = () => {
-            divBlock.remove();
+            modalBlock.remove();
         }
         const closeBtn = document.createElement("BUTTON");
         closeBtn.innerHTML = "&times";
         closeBtn.style.width = "5rem";
         closeBtn.onclick = () => {
-            divBlock.remove();
+            modalBlock.remove();
         }
-        divMessageContainer.appendChild(emailInput);
-        divMessageContainer.appendChild(closeBtn);
-        divMessageContainer.appendChild(submitInput);
-        divBlock.appendChild(divMessageContainer);
-        headerDiv.parentElement.insertBefore(divBlock,headerDiv);
+        modalMessageWindowDiv.appendChild(emailInput);
+        modalMessageWindowDiv.appendChild(closeBtn);
+        modalMessageWindowDiv.appendChild(submitInput);
+        modalBlock.appendChild(modalMessageWindowDiv);
+        headerDiv.parentElement.insertBefore(modalBlock,headerDiv);
     });
 }
 
 function showCookiesBlock(){
     setTimeout(()=>{
-        divBlock = document.createElement("DIV");
+        bottomCookiesDiv = document.createElement("DIV");
         pBlock = document.createElement("DIV");
         hideBtnDiv = document.createElement("DIV");
         hideBtn = document.createElement("BUTTON");
         hideBtn.style.height = "100%";
         hideBtn.onclick = () => {
-            divBlock.remove();
+            bottomCookiesDiv.remove();
         }
         hideBtn.textContent = "Hide";
         hideBtnDiv.style.flexGrow = "1";
         pBlock.style.flexGrow = "3";
-        divBlock.style.display = "flex"
-        divBlock.style.position = "fixed";
-        divBlock.style.bottom = 0;
+        bottomCookiesDiv.style.display = "flex"
+        bottomCookiesDiv.style.position = "fixed";
+        bottomCookiesDiv.style.bottom = 0;
         pBlock.textContent = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure ratione veritatis commodi obcaecati quod veniam consequatur necessitatibus, aliquam sequi tempore vitae quas magnam repellat? Impedit placeat magnam sunt accusantium repellat.";
-        divBlock.style.width = "100%";
-        divBlock.style.border = ".5rem #efefef solid";
-        divBlock.style.backgroundColor = "white";
+        bottomCookiesDiv.style.width = "100%";
+        bottomCookiesDiv.style.border = ".5rem #efefef solid";
+        bottomCookiesDiv.style.backgroundColor = "white";
         hideBtnDiv.appendChild(hideBtn);
-        divBlock.appendChild(pBlock);
-        divBlock.appendChild(hideBtnDiv);
-        document.querySelector("body").appendChild(divBlock);
+        bottomCookiesDiv.appendChild(pBlock);
+        bottomCookiesDiv.appendChild(hideBtnDiv);
+        document.querySelector("body").appendChild(bottomCookiesDiv);
     },3000)
 }

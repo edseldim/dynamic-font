@@ -1,4 +1,4 @@
-#dynamic-front
+# dynamic-front
 
 The point of this project is to show a dynamic website without using frameworks. It is made for learning purposes only.
 

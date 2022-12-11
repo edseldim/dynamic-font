@@ -8,9 +8,11 @@ registerListeners();
 function registerListeners(){
 
     document.addEventListener("DOMContentLoaded", (e) => {
+        //document.querySelector(".cat-list").appendChild(categoryBlock);
         fetch("https://api.escuelajs.co/api/v1/categories")
         .then(re => re.json())
         .then(re => {
+            document.querySelector(".cat-loading-div").remove();
             re.forEach((cat) => {
                 let catName = cat["name"];
                 let catImage = cat["image"];
@@ -28,7 +30,7 @@ function registerListeners(){
                 imageDiv.appendChild(imageBlock);
                 categoryBlock.appendChild(imageDiv);
                 categoryBlock.appendChild(descBlock);
-                document.querySelector(".cat-list").append(categoryBlock);
+                document.querySelector(".cat-list").appendChild(categoryBlock);
             });
         })
     })
@@ -79,7 +81,10 @@ function registerListeners(){
         submitInput.style.width = "5rem";
         submitInput.style.textAlign = "center";
         submitInput.onclick = () => {
-            modalBlock.remove();
+            if(emailInput.value.trim() !== "" && emailInput.value.trim().match(/^[a-zA-Z]+[a-zA-Z0-9_.]+@[a-zA-Z.]+[a-zA-Z]$/) !== null){
+                localStorage.setItem("email",emailInput.value.trim())
+                modalBlock.remove();
+            }
         }
         const closeBtn = document.createElement("BUTTON");
         closeBtn.innerHTML = "&times";

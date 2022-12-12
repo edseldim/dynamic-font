@@ -75,6 +75,7 @@ function registerListeners(){
         const emailInput = document.createElement("INPUT");
         emailInput.type = "email";
         emailInput.placeholder = "test@email.com";
+        emailInput.value = localStorage.getItem("email")? localStorage.getItem("email"):"";
         const submitInput = document.createElement("INPUT");
         submitInput.type = "submit";
         submitInput.value = "send";
